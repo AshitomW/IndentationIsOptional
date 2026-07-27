@@ -13,7 +13,7 @@ namespace iio{
   enum class LineType{
     BLANK,
     OpenBrace,
-    ClsoeBrace,
+    CloseBrace,
     Regular
   };
 

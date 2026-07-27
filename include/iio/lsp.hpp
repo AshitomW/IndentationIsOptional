@@ -38,7 +38,7 @@ namespace iio::lsp{
     [[nodiscard]] const std::vector<std::pair<std::string, JsonValue>>& as_object() const;
 
     [[nodiscard]] const JsonValue* get(const std::string& key) const;
-    [[nodiscard]] std::string seialize() const;
+    [[nodiscard]] std::string serialize() const;
     [[nodiscard]] static JsonValue parse(std::string_view input);
 
     private:
@@ -56,7 +56,7 @@ namespace iio::lsp{
      static JsonValue parse_number(std::string_view input, std::size_t& post);
      static JsonValue parse_array(std::string_view input, std::size_t& post);
      static JsonValue parse_object(std::string_view input, std::size_t& post);
-     static JsonValue skip_whitespace(std::string_view input, std::size_t& post);
+     static void skip_whitespace(std::string_view input, std::size_t& pos);
   };
 
   JsonValue make_object(

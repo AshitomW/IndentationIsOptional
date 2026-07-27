@@ -21,7 +21,8 @@ namespace iio{
     public:
       Checker() = default;
       Checker(const Checker&) = delete;
-      Checker& operator=(const Checker&) = delete; 
+      Checker& operator=(const Checker&) = delete;
+      Checker(Checker&&) = default;
       Checker& operator=(Checker&&) = default;
 
     
@@ -31,10 +32,13 @@ namespace iio{
       [[nodiscard]] int line_number() const noexcept {return line_num_;}
       void reset() noexcept;
 
+    private:
+      [[nodiscard]] bool has_inline_block_braces(std::string_view line) const;
+
   };
 
 
   [[nodiscard]] std::optional<Diagnostic> check_stream(std::istream& input);
-  [[nodiscard]] std::optional<Diagnostic> check_file(const std::string& filtepath);
+  [[nodiscard]] std::optional<Diagnostic> check_file(const std::string& filepath);
 
 }
